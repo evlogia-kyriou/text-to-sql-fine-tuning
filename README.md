@@ -701,8 +701,8 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) file for 
 
 For questions or support:
 - **Email**: fessenden.jf@gmail.com
-- **GitHub Issues**: [Create an issue](https://github.com/evlogia-kyriou/text-to-sql-fine-tuning/issues)
-- **LinkedIn**: [Your Profile](https://linkedin.com/in/fessenden)
+- **GitHub Issues**: [text-to-sql-fine-tuning](https://github.com/evlogia-kyriou/text-to-sql-fine-tuning)
+- **LinkedIn**: [fessenden.jf](https://linkedin.com/in/fessenden)
 
 ---
 
