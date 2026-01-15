@@ -1,0 +1,78 @@
+{
+  "total": 10,
+  "sql_generated": 10,
+  "sql_executable": 9,
+  "exact_match": 4,
+  "examples": [
+    {
+      "question": "What are all the employee names?",
+      "difficulty": "easy",
+      "generated_sql": "SELECT name FROM employees",
+      "ground_truth": "SELECT name FROM employees",
+      "executable": true
+    },
+    {
+      "question": "How many employees work in the Engineering department?",
+      "difficulty": "medium",
+      "generated_sql": "SELECT COUNT(T1.id) FROM employees AS T1 INNER JOIN departments AS T2 ON T1.department_id = T2.id WHERE T2.name = 'Engineering'",
+      "ground_truth": "SELECT COUNT(*) FROM employees e JOIN departments d ON e.department_id = d.id WHERE d.name = 'Engineering'",
+      "executable": true
+    },
+    {
+      "question": "What is the average salary of employees?",
+      "difficulty": "easy",
+      "generated_sql": "SELECT AVG(salary) FROM employees",
+      "ground_truth": "SELECT AVG(salary) FROM employees",
+      "executable": true
+    },
+    {
+      "question": "List all departments with their total employee count",
+      "difficulty": "medium",
+      "generated_sql": "SELECT T2.name, COUNT(T1.id) FROM employees AS T1 INNER JOIN departments AS T2 ON T1.department_id = T2.id GROUP BY T2.name",
+      "ground_truth": "SELECT d.name, COUNT(e.id) FROM departments d LEFT JOIN employees e ON d.id = e.department_id GROUP BY d.name",
+      "executable": true
+    },
+    {
+      "question": "Who is the highest paid employee?",
+      "difficulty": "easy",
+      "generated_sql": "SELECT name FROM employees ORDER BY salary DESC LIMIT 1",
+      "ground_truth": "SELECT name FROM employees ORDER BY salary DESC LIMIT 1",
+      "executable": true
+    },
+    {
+      "question": "What is the total budget of all active projects?",
+      "difficulty": "easy",
+      "generated_sql": "SELECT SUM(budget) FROM projects WHERE status = 'active'",
+      "ground_truth": "SELECT SUM(budget) FROM projects WHERE status = 'active'",
+      "executable": true
+    },
+    {
+      "question": "List all employees hired after 2020 with their department names",
+      "difficulty": "medium",
+      "generated_sql": "SELECT T1.name, T2.name FROM employees AS T1 INNER JOIN departments AS T2 ON T1.department_id = T2.id WHERE STRFTIME('%Y', T1.hire_date) > '2020'",
+      "ground_truth": "SELECT e.name, d.name FROM employees e JOIN departments d ON e.department_id = d.id WHERE e.hire_date > '2020-01-01'",
+      "executable": true
+    },
+    {
+      "question": "Which department has the highest total salary cost?",
+      "difficulty": "hard",
+      "generated_sql": "SELECT T2.name FROM employees AS T1 INNER JOIN departments AS T2 ON T1.department_id = T2.id GROUP BY T2.name ORDER BY SUM(T1.salary) DESC LIMIT 1",
+      "ground_truth": "SELECT d.name FROM departments d JOIN employees e ON d.id = e.department_id GROUP BY d.name ORDER BY SUM(e.salary) DESC LIMIT 1",
+      "executable": true
+    },
+    {
+      "question": "How many projects does each department have?",
+      "difficulty": "medium",
+      "generated_sql": "SELECT T1.name, COUNT(T2.id) FROM departments AS T1 INNER JOIN projects AS T2 ON T1.id = T2.department_id GROUP BY T1.name",
+      "ground_truth": "SELECT d.name, COUNT(p.id) FROM departments d LEFT JOIN projects p ON d.id = p.department_id GROUP BY d.name",
+      "executable": true
+    },
+    {
+      "question": "What is the name and salary of employees in San Francisco?",
+      "difficulty": "medium",
+      "generated_sql": "SELECT name, salary FROM employees WHERE location = 'San Francisco'",
+      "ground_truth": "SELECT e.name, e.salary FROM employees e JOIN departments d ON e.department_id = d.id WHERE d.location = 'San Francisco'",
+      "executable": false
+    }
+  ]
+}

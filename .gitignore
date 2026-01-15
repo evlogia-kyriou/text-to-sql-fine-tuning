@@ -1,0 +1,75 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Data files (LARGE)
+data/raw/
+data/bird/
+data/processed/
+*.zip
+*.db
+*.sqlite
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Model Checkpoints (DON'T PUSH - already on HuggingFace)
+models/
+*.bin
+*.pt
+*.pth
+*.safetensors
+*.ckpt
+
+# Training Outputs
+outputs/
+runs/
+logs/
+*.log
+
+# Data Files (DON'T PUSH - too large)
+data/bird/
+data/processed/
+*.db
+*.sqlite
+
+# Keep structure but ignore data
+!data/.gitkeep
+
+# Temporary files
+*.tmp
+*.bak
+*.cache
+
+# Environment variables
+.env
+
+# Hugging Face cache
+.cache/
+huggingface/
+wandb/
+
+# IDE
+.vscode/
+.idea/
+
+# Outputs (large)
+outputs/
+runs/
+logs/

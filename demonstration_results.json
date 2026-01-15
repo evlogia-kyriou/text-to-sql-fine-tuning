@@ -1,0 +1,66 @@
+{
+  "demonstration_date": "2026-01-15T10:08:05.822315",
+  "model": "Qwen2.5-Coder-3B-Instruct (LoRA r=16)",
+  "database": "data\\dummy\\company.sqlite",
+  "results": [
+    {
+      "question": "What are all the employee names?",
+      "difficulty": "easy",
+      "sql": "SELECT name FROM employees",
+      "success": true,
+      "rows_returned": 8,
+      "sample_data": [
+        [
+          "Alice Johnson"
+        ],
+        [
+          "Bob Smith"
+        ],
+        [
+          "Carol White"
+        ]
+      ]
+    },
+    {
+      "question": "How many employees work in the Engineering department?",
+      "difficulty": "medium",
+      "sql": "SELECT COUNT(T1.id) FROM employees AS T1 INNER JOIN departments AS T2 ON T1.department_id = T2.id WHERE T2.name = 'Engineering'",
+      "success": true,
+      "rows_returned": 1,
+      "sample_data": [
+        [
+          3
+        ]
+      ]
+    },
+    {
+      "question": "Who is the highest paid employee?",
+      "difficulty": "easy",
+      "sql": "SELECT name FROM employees ORDER BY salary DESC LIMIT 1",
+      "success": true,
+      "rows_returned": 1,
+      "sample_data": [
+        [
+          "Bob Smith"
+        ]
+      ]
+    },
+    {
+      "question": "Which department has the highest total salary cost?",
+      "difficulty": "hard",
+      "sql": "SELECT T2.name FROM employees AS T1 INNER JOIN departments AS T2 ON T1.department_id = T2.id GROUP BY T2.name ORDER BY SUM(T1.salary) DESC LIMIT 1",
+      "success": true,
+      "rows_returned": 1,
+      "sample_data": [
+        [
+          "Engineering"
+        ]
+      ]
+    }
+  ],
+  "summary": {
+    "total": 4,
+    "successful": 4,
+    "success_rate": 1.0
+  }
+}
